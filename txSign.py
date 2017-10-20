@@ -82,5 +82,3 @@ req = requests.get('https://testnode2.wavesnodes.com/assets/balance/%s' % (b58en
 
 #req = requests.post('https://testnode2.wavesnodes.com/assets/broadcast/transfer', data=data, headers={'content-type': 'application/json'}).json()
 print(req)
-
- #
