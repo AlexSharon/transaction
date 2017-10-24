@@ -75,11 +75,14 @@ data = json.dumps({
                 "signature": b58encode(sign)
             })
 
-#set the node and execute transaction
+#set node
 pywaves.setNode(node = 'http://52.30.47.67:6869', chain = 'testnet')
-print(pywaves.wrapper('/addresses/balance/%s%s' % (b58encode(address), ''))['balance'])
-req = requests.get('https://testnode2.wavesnodes.com/assets/balance/%s' % (b58encode(address))).json()
 
-#req = requests.post('https://testnode2.wavesnodes.com/assets/broadcast/transfer', data=data, headers={'content-type': 'application/json'}).json()
-print(req)
-#
+#check balance
+result = requests.get('http://testnode2.wavesnodes.com/addresses/balance/%s' % (b58encode(address))).json()['balance']
+
+#send transaction
+result = requests.post('https://testnode2.wavesnodes.com/assets/broadcast/transfer', data=data, headers={'content-type': 'application/json'}).json()
+
+print(result)
+
